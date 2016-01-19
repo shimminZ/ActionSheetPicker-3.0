@@ -460,14 +460,14 @@ CG_INLINE BOOL isIPhone4() {
 - (UIBarButtonItem *)createToolbarLabelWithTitle:(NSString *)aTitle
                              titleTextAttributes:(NSDictionary *)titleTextAttributes
                               andAttributedTitle:(NSAttributedString *)attributedTitle {
-    UILabel *toolBarItemLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 180, 30)];
+    UILabel *toolBarItemLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 190, 30)];
     [toolBarItemLabel setTextAlignment:NSTextAlignmentCenter];
     [toolBarItemLabel setBackgroundColor:[UIColor clearColor]];
-
+    
     CGFloat strikeWidth;
     CGSize textSize;
-
-
+    
+    
     if (titleTextAttributes) {
         toolBarItemLabel.attributedText = [[NSAttributedString alloc] initWithString:aTitle attributes:titleTextAttributes];
         textSize = toolBarItemLabel.attributedText.size;
@@ -477,9 +477,9 @@ CG_INLINE BOOL isIPhone4() {
     }
     else {
         [toolBarItemLabel setTextColor:(NSFoundationVersionNumber > NSFoundationVersionNumber_iOS_6_1) ? [UIColor blackColor] : [UIColor whiteColor]];
-        [toolBarItemLabel setFont:[UIFont boldSystemFontOfSize:16]];
+        [toolBarItemLabel setFont:[UIFont boldSystemFontOfSize:14]];
         toolBarItemLabel.text = aTitle;
-
+        
         if (NSFoundationVersionNumber > NSFoundationVersionNumber_iOS_6_1) {
 #pragma clang diagnostic push
 #pragma ide diagnostic ignored "UnavailableInDeploymentTarget"
@@ -492,13 +492,13 @@ CG_INLINE BOOL isIPhone4() {
 #pragma clang diagnostic pop
         }
     }
-
+    
     strikeWidth = textSize.width;
-
+    
     if (strikeWidth < 180) {
         [toolBarItemLabel sizeToFit];
     }
-
+    
     UIBarButtonItem *buttonLabel = [[UIBarButtonItem alloc] initWithCustomView:toolBarItemLabel];
     return buttonLabel;
 }
